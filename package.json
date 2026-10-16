@@ -1,0 +1,10 @@
+{
+  "name": "testtest",
+  "version": "1.0.0",
+  "description": "Kalkulator kurs sederhana (HTML, CSS, JavaScript) dengan data dari open.er-api.com",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "node --test"
+  }
+}

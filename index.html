@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalkulator Kurs</title>
+  <meta name="description" content="Kalkulator kurs mata uang sederhana dengan data kurs terkini.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Kalkulator Kurs</h1>
+    <p class="subtitle">Ubah jumlah uang antar mata uang dengan kurs terkini.</p>
+
+    <form id="kurs-form" novalidate>
+      <div class="field">
+        <label for="amount">Jumlah</label>
+        <input id="amount" name="amount" type="number" inputmode="decimal"
+               min="0" step="any" value="1" autocomplete="off">
+      </div>
+
+      <div class="pair">
+        <div class="field">
+          <label for="from">Dari</label>
+          <select id="from" name="from"></select>
+        </div>
+
+        <button id="swap" class="icon-button" type="button"
+                aria-label="Tukar mata uang asal dan tujuan" title="Tukar">&#8644;</button>
+
+        <div class="field">
+          <label for="to">Ke</label>
+          <select id="to" name="to"></select>
+        </div>
+      </div>
+    </form>
+
+    <section class="output" aria-live="polite">
+      <p id="result" class="result">-</p>
+      <p id="rate" class="meta"></p>
+      <p id="updated" class="meta"></p>
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <button id="refresh" class="secondary" type="button">Segarkan kurs</button>
+  </main>
+
+  <footer>
+    <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Rates By Exchange Rate API</a>
+    &middot; Kurs bersifat indikatif, bukan kurs transaksi bank.
+  </footer>
+
+  <script src="src/converter.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
