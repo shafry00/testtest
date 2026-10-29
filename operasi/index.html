@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estimasi Biaya Operasi</title>
+  <meta name="description" content="Simulasi perkiraan biaya operasi di rumah sakit: jasa dokter, kamar operasi, rawat inap, implan, dan bagian asuransi.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="layout">
+    <section class="card">
+      <h1>Estimasi Biaya Operasi</h1>
+      <p class="subtitle">Pilih tindakan dan kondisi perawatan untuk melihat perkiraan biayanya.</p>
+
+      <form id="form" novalidate>
+        <div class="field">
+          <label for="procedure">Tindakan operasi</label>
+          <select id="procedure" name="procedure"></select>
+          <p id="proc-hint" class="hint"></p>
+        </div>
+
+        <div class="grid">
+          <div class="field">
+            <label for="hospitalType">Jenis rumah sakit</label>
+            <select id="hospitalType" name="hospitalType"></select>
+          </div>
+          <div class="field">
+            <label for="roomClass">Kelas perawatan</label>
+            <select id="roomClass" name="roomClass"></select>
+          </div>
+          <div class="field">
+            <label for="anesthesia">Anestesi</label>
+            <select id="anesthesia" name="anesthesia"></select>
+          </div>
+          <div class="field">
+            <label for="hours">Lama operasi (jam)</label>
+            <input id="hours" name="hours" type="number" inputmode="decimal" min="0" step="0.25">
+          </div>
+          <div class="field">
+            <label for="days">Rawat inap (hari)</label>
+            <input id="days" name="days" type="number" inputmode="numeric" min="0" step="1">
+          </div>
+          <div class="field">
+            <label for="icuDays">Ruang ICU (hari)</label>
+            <input id="icuDays" name="icuDays" type="number" inputmode="numeric" min="0" step="1">
+          </div>
+          <div class="field">
+            <label for="implant">Implan / alat khusus (Rp)</label>
+            <input id="implant" name="implant" type="number" inputmode="numeric" min="0" step="100000">
+          </div>
+          <div class="field">
+            <label for="otherCosts">Biaya lain (Rp)</label>
+            <input id="otherCosts" name="otherCosts" type="number" inputmode="numeric" min="0" step="100000" value="0">
+          </div>
+        </div>
+
+        <label class="check">
+          <input id="emergency" name="emergency" type="checkbox">
+          <span>Operasi darurat / cito (tambahan 25% jasa medis dan kamar operasi)</span>
+        </label>
+
+        <fieldset>
+          <legend>Asuransi</legend>
+          <div class="grid">
+            <div class="field">
+              <label for="coveragePercent">Ditanggung (%)</label>
+              <input id="coveragePercent" name="coveragePercent" type="number" inputmode="numeric" min="0" max="100" step="5" value="0">
+            </div>
+            <div class="field">
+              <label for="coverageLimit">Plafon (Rp, opsional)</label>
+              <input id="coverageLimit" name="coverageLimit" type="number" inputmode="numeric" min="0" step="1000000">
+            </div>
+          </div>
+        </fieldset>
+
+        <button id="reset" class="ghost" type="button">Kembalikan ke nilai bawaan tindakan</button>
+      </form>
+    </section>
+
+    <section class="card result-card" aria-live="polite">
+      <p class="label">Perkiraan total</p>
+      <p id="total" class="total">-</p>
+      <p id="range" class="meta"></p>
+
+      <table id="breakdown" class="breakdown">
+        <caption class="sr-only">Rincian biaya</caption>
+        <tbody></tbody>
+      </table>
+
+      <dl class="split">
+        <div><dt>Ditanggung asuransi</dt><dd id="covered">-</dd></div>
+        <div class="strong"><dt>Dibayar pasien</dt><dd id="patient">-</dd></div>
+      </dl>
+
+      <p id="status" class="status" role="status"></p>
+      <button id="copy" class="primary" type="button">Salin rincian</button>
+      <p class="disclaimer">
+        Angka hanya simulasi berdasarkan tarif contoh, bukan penawaran atau tarif resmi.
+        Biaya sebenarnya bergantung pada kondisi pasien, dokter, dan kebijakan rumah sakit.
+        Minta rincian resmi (estimasi biaya) dari bagian administrasi rumah sakit.
+      </p>
+    </section>
+  </main>
+
+  <script src="src/tarif.js"></script>
+  <script src="src/estimator.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

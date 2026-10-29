@@ -11,6 +11,12 @@ Kalkulator kurs mata uang sederhana: web statis (HTML, CSS, JavaScript) tanpa fr
 - Kurs disimpan di browser selama 1 jam supaya hemat panggilan API. Kalau internet putus, data tersimpan terakhir tetap dipakai dan diberi tanda.
 - Pilihan mata uang terakhir diingat, mengikuti mode terang/gelap perangkat.
 
+## Estimasi Biaya Operasi
+
+Aplikasi kedua di repositori ini, di folder `operasi/` (buka `operasi/index.html`, atau `npm start` lalu `/operasi/`). Memperkirakan biaya operasi di rumah sakit dari tindakan, jenis RS, kelas perawatan, anestesi, lama operasi/rawat, ICU, implan, status darurat, dan bagian asuransi. Hasil berupa total, kisaran, dan rincian per komponen.
+
+**Penting:** tarif di `operasi/src/tarif.js` adalah angka contoh untuk simulasi, bukan tarif resmi. Ganti dengan tarif rumah sakit Anda; logika hitung ada di `operasi/src/estimator.js`.
+
 ## Cara menjalankan
 
 Buka `index.html` langsung di browser, atau jalankan server lokal:
